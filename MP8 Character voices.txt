@@ -1,0 +1,93 @@
+01 - Ballyhoo_Hello
+02 - Ballyhoo_Howdy
+03 - Ballyhoo_Welcome
+04 - Ballyhoo_SeeYa
+05 - Ballyhoo_Talk1
+06 - Ballyhoo_Talk2
+07 - Ballyhoo_Talk3
+08 - Ballyhoo_AmIRight
+09 - Ballyhoo_Hoho
+0A - Ballyhoo_Haha
+0B - Ballyhoo_Laughter
+0C - Ballyhoo_Ohh
+0D - Ballyhoo_BadaBoom (Unused)
+0E - Ballyhoo_GoodLuck
+0F - Ballyhoo_Whoa
+10 - BigTop_Hello
+11 - BigTop_ByeBye
+12 - BigTop_Talk1
+13 - BigTop_Talk2
+14 - BigTop_Talk3
+15 - BigTop_AhhHaa (Unused)
+16 - BigTop_MmmHmm
+17 - BigTop_LaughterAlt1
+18 - BigTop_LaughterAlt2
+19 - BigTop_Laughter
+1A - BigTop_Surprised
+1B - BigTop_LaughterAlt3 (Unused)
+1C - BigTop_LaughterAlt4 (Unused)
+1D - BigTop_GoodLuck
+1E - BigTop_Whoa
+1F - DK_Talk
+20 - DK_Sad
+21 - DK_Happy
+22 - Bowser_Bwahahaha
+23 - Bowser_Disappointed
+24 - Bowser_DisappointedAlt
+25 - Bowser_Roar
+26 - Bowser_Blarrgh
+27 - Bowser_Talk1
+28 - Bowser_Talk2
+29 - Bowser_Talk3
+2A - Bowser_Laughter
+2B - Bowser_Huh
+2C - Bowser_DoneFor
+2D - Beep (Debug menu??)
+2E - Beep (Debug menu??)
+2F - Beep (Debug menu??)
+30 - ShyGuy_Talk (Unused, 45 is identical)
+31 - ShyGuy_Sad (Unused, 46 is identical)
+32 - ShyGuy_Happy (Unused)
+33 - Goomba_Talk
+34 - Goomba_Sad
+35 - Goomba_Happy
+36 - Koopa_Talk
+37 - Koopa_Sad
+38 - Koopa_Happy
+39 - Whomp
+3A - Thwomp
+3B - BobOmb
+3C - BobOmb_Alt (Unused)
+3D - ChainChomp_Bark
+3E - Monkey_Talk
+3F - Monkey_Sad
+40 - Kamek_Talk
+41 - Kamek_Sad
+42 - Toady_Talk
+43 - Toady_Sad
+44 - Unknown1 (Unused)
+45 - SpearGuy_Talk
+46 - SpearGuy_Sad
+47 - Bandit_Talk
+48 - Bandit_Sad
+49 - Pianta_Talk
+4A - Pianta_Sad
+4B - CutePianta_Talk
+4C - CutePianta_Sad
+4D - Unknown2 (Unused)
+4E - Unknown3 (Unused)
+4F - CaptainGoombaAlt (Unused)
+50 - CaptainGoomba
+51 - Beep (Debug menu??)
+52 - Beep (Debug menu??)
+53 - Dolphin_Talk
+54 - Dolphin_Sad
+55 - Mowz_Talk
+56 - Mowz_Sad
+57 - KingBoo_Talk
+58 - KingBoo_Sad
+59 - KingBoo_Sad (Duplicate, unused)
+5A - RedBoo_Talk
+5B - RedBoo_Sad
+5C - Toadsworth_Talk (Unused)
+5D - Toadsworth_Sad (Unused)
