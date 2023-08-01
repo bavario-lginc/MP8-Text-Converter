@@ -37,18 +37,20 @@ int main (int argc, char *argv[]) {
         fseek(input, 0x1BFC, SEEK_SET);
         fread(mInputstr, 1, sizeof(mInputstr), input);
         binToXMLString(mInputstr, mOutstr);
+        fwrite(mOutstr, 1, strlen(mOutstr), output);
+        fclose(input);
+        fclose(output);
     } else if (outputFileStr.find(".bin\0") != -1) {
         printf(NOTICE "CONVERTING" STRRESET " .xml -> .bin\n");
 
-        xmlToBinString(argv[1], mOutstr);
-        printf("\"%s\"\n", mOutstr);
+        xmlToBinString(input, mOutstr);
+        fwrite(mOutstr, 1, strlen(mOutstr), output);
+        fclose(input);
+        fclose(output);
     } else {
         printf(FAIL "FATAL" STRRESET ": Neither file is a .bin file.\nAbort.\n");
         return 3;
     }
 
-    fwrite(mOutstr, 1, strlen(mOutstr), output);
-    fclose(input);
-    fclose(output);
     printf(SUCCESS "SUCCESS" STRRESET "\n");
 }
