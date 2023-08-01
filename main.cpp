@@ -41,6 +41,7 @@ int main (int argc, char *argv[]) {
         printf(NOTICE "CONVERTING" STRRESET " .xml -> .bin\n");
 
         xmlToBinString(argv[1], mOutstr);
+        printf("\"%s\"\n", mOutstr);
     } else {
         printf(FAIL "FATAL" STRRESET ": Neither file is a .bin file.\nAbort.\n");
         return 3;
