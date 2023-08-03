@@ -276,9 +276,98 @@ void voiceToXML (char inputVoice, char *outputstr) {
     }
 }
 
+void iconToXML (char inputIcon, char *outputstr) {
+    switch (inputIcon) {
+        case 0x01:
+            strncat(outputstr, "<icon type=\"LeftArrow\" />", 25);
+            break;
+        case 0x02:
+            strncat(outputstr, "<icon type=\"RightArrow\" />", 26);
+            break;
+        case 0x03:
+            strncat(outputstr, "<icon type=\"UpArrow\" />", 23);
+            break;
+        case 0x04:
+            strncat(outputstr, "<icon type=\"DownArrow\" />", 25);
+            break;
+        case 0x05:
+            strncat(outputstr, "<icon type=\"LeftRightArrow\" />", 30);
+            break;
+        case 0x06:
+            strncat(outputstr, "<icon type=\"UpDownArrow\" />", 27);
+            break;
+        case 0x07:
+            strncat(outputstr, "<icon type=\"WiiRemote\" />", 25);
+            break;
+        case 0x08:
+            strncat(outputstr, "<icon type=\"AButton\" />", 23);
+            break;
+        case 0x09:
+            strncat(outputstr, "<icon type=\"BButton\" />", 23);
+            break;
+        case 0x0A:
+            strncat(outputstr, "<icon type=\"1Button\" />", 23);
+            break;
+        case 0x0B:
+            strncat(outputstr, "<icon type=\"2Button\" />", 23);
+            break;
+        case 0x0C:
+            strncat(outputstr, "<icon type=\"PlusButton\" />", 26);
+            break;
+        case 0x0D:
+            strncat(outputstr, "<icon type=\"MinusButton\" />", 27);
+            break;
+        case 0x0E:
+            strncat(outputstr, "<icon type=\"PowerButton\" />", 27);
+            break;
+        case 0x0F:
+            strncat(outputstr, "<icon type=\"DPad\" />", 20);
+            break;
+        case 0x10:
+            strncat(outputstr, "<icon type=\"HomeButton\" />", 26);
+            break;
+        case 0x11:
+            strncat(outputstr, "<icon type=\"SquarePlusButton\" />", 32);
+            break;
+        case 0x12:
+            strncat(outputstr, "<icon type=\"Nunchuck\" />", 24);
+            break;
+        case 0x13:
+            strncat(outputstr, "<icon type=\"CButton\" />", 23);
+            break;
+        case 0x14:
+            strncat(outputstr, "<icon type=\"ZButton\" />", 23);
+            break;
+        case 0x15:
+            strncat(outputstr, "<icon type=\"NunchuckStick\" />", 29);
+            break;
+        case 0x16:
+            strncat(outputstr, "<icon type=\"Star\" />", 20);
+            break;
+        case 0x17:
+            strncat(outputstr, "<icon type=\"Coin\" />", 20);
+            break;
+        case 0x18:
+            strncat(outputstr, "<icon type=\"AButtonBlink\" />", 28);
+            break;
+        case 0x19:
+            strncat(outputstr, "<icon type=\"AButtonBlinkFloatLeft\" />", 36);
+            break;
+        case 0x1A:
+            strncat(outputstr, "<icon type=\"P1 Hand\" />", 23);
+            break;
+        case 0x1B:
+            strncat(outputstr, "<icon type=\"ButtonHover\" />", 27);
+            break;
+        case 0x1C:
+            strncat(outputstr, "<icon type=\"LongButtonHover\" />", 31);
+            break;
+    }
+}
+
 void binToXMLString (unsigned char *mInputstr, char *outputstr) {
     bool mIsColorMode = false;
-    bool mIsColorDefined = false;
+    bool mIsJargon = false;
     for (int i = 0; i < strlen((char*)mInputstr); i++) {
         switch (mInputstr[i]) {
             case 0x10:
@@ -305,17 +394,27 @@ void binToXMLString (unsigned char *mInputstr, char *outputstr) {
             case 0x85:
                 strncat(outputstr, ".", 1);
                 break;
+            case 0x5F:
+                strncat(outputstr, "/", 1);
+                break;
             // Special chars
             case 0xFF:
-                strncat(outputstr, "<pagebreak />\n", 14);
+                if (mIsJargon) {
+                    strncat(outputstr, "</unknown>", 10);
+                    mIsJargon = false;
+                } else 
+                    strncat(outputstr, "<pagebreak />\n", 14);
+                break;
+            case 0x0E:
+                iconToXML(mInputstr[i + 1], outputstr);
+                i++;
                 break;
             case 0x1C:
                 voiceToXML(mInputstr[i + 1], outputstr);
                 i++;
                 break;
             case 0x1E:
-                if (mInputstr[i + 1] != 0x08) 
-                    strncat(outputstr, "<color value=\"", 14);
+                strncat(outputstr, "<color value=\"", 14);
                 mIsColorMode = true;
                 break;
             // Color modes
@@ -323,73 +422,67 @@ void binToXMLString (unsigned char *mInputstr, char *outputstr) {
             case 0x0B:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "black\">", 7);
-                mIsColorDefined = true;
+                strncat(outputstr, "black\" />", 9);
                 mIsColorMode = false;
                 break;
             case 0x02:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "blue\">", 6);
-                mIsColorDefined = true;
+                strncat(outputstr, "blue\" />", 8);
                 mIsColorMode = false;
                 break;
             case 0x03:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "red\">", 5);
-                mIsColorDefined = true;
+                strncat(outputstr, "red\" />", 7);
                 mIsColorMode = false;
                 break;
             case 0x04:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "purple\">", 8);
-                mIsColorDefined = true;
+                strncat(outputstr, "purple\" />", 10);
                 mIsColorMode = false;
                 break;
             case 0x05:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "green\">", 7);
-                mIsColorDefined = true;
+                strncat(outputstr, "green\" />", 9);
                 mIsColorMode = false;
                 break;
             case 0x06:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "cyan\">", 6);
-                mIsColorDefined = true;
+                strncat(outputstr, "cyan\" />", 8);
                 mIsColorMode = false;
                 break;
             case 0x07:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "yellow\">", 8);
-                mIsColorDefined = true;
+                strncat(outputstr, "yellow\" />", 10);
+                mIsColorMode = false;
+                break;
+            case 0x08:
+                if (!mIsColorMode) 
+                    break;
+                strncat(outputstr, "white\" />", 9);
                 mIsColorMode = false;
                 break;
             case 0x09:
                 if (!mIsColorMode) 
                     break;
-                strncat(outputstr, "gray\">", 6);
-                mIsColorDefined = true;
-                mIsColorMode = false;
-                break;
-            case 0x08:
-                printf("%i: Is White\n", i);
-                if (!mIsColorMode) 
-                    break;
-                if (mIsColorDefined) 
-                    strncat(outputstr, "</color>", 8);
-                else 
-                    strncat(outputstr, "<color value=\"white\">", 21);
-                mIsColorDefined = false;
+                strncat(outputstr, "gray\" />", 8);
                 mIsColorMode = false;
                 break;
             // -----------
             default:
-                strncat(outputstr, (char*)&mInputstr[i], 1);
+                if (mInputstr[i] >= 0x30 && mInputstr[i] <= 0x7A) 
+                    strncat(outputstr, (char*)&mInputstr[i], 1);
+                else if (!mIsJargon) {
+                    mIsJargon = true;
+                    strncat(outputstr, "<unknown>", 9);
+                    strncat(outputstr, (char*)&mInputstr[i], 1);
+                } else 
+                    strncat(outputstr, (char*)&mInputstr[i], 1);
                 break;
         }
     }

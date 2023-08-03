@@ -23,7 +23,7 @@ int main (int argc, char *argv[]) {
         printf(FAIL "FATAL" STRRESET ": No output file specified.\nAbort.\n");
         return 2;
     }
-    FILE *output = fopen(argv[2], "w");
+    FILE *output = fopen(argv[2], "wb");
     if (output == NULL) {
         printf(FAIL "FATAL" STRRESET ": Could not open output file %s.\nAbort.\n", argv[2]);
         return 2;

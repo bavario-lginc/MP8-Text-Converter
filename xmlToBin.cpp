@@ -184,8 +184,95 @@ char voiceToBin (std::string tagVal) {
         return 0x5C;
     if (tagVal == "Toadsworth_Sad") 
         return 0x5D;
-	printf(FAIL "WHAT THE HELL" STRRESET "\n");
-	exit(69);
+	printf(FAIL "FATAL" STRRESET ": Unrecognised voice '%s'\nAbort.\n", tagVal);
+	exit(5);
+}
+
+char colorToBin (std::string tagVal) {
+    if (tagVal == "black") 
+        return 0x01;
+    if (tagVal == "blue") 
+        return 0x02;
+    if (tagVal == "red") 
+        return 0x03;
+    if (tagVal == "purple") 
+        return 0x04;
+    if (tagVal == "green")
+        return 0x05;
+    if (tagVal == "cyan")
+        return 0x06;
+    if (tagVal == "yellow")
+        return 0x07;
+    if (tagVal == "white")
+        return 0x08;
+    if (tagVal == "gray")
+        return 0x09;
+    printf(FAIL "FATAL" STRRESET ": Unrecognised color '%s'\nAbort.\n", tagVal);
+	exit(5);
+}
+
+char iconToBin (std::string tagVal) {
+    if (tagVal == "LeftArrow") 
+        return 0x01;
+    if (tagVal == "RightArrow") 
+        return 0x02;
+    if (tagVal == "UpArrow") 
+        return 0x03;
+    if (tagVal == "DownArrow") 
+        return 0x04;
+    if (tagVal == "LeftRightArrow") 
+        return 0x05;
+    if (tagVal == "UpDownArrow") 
+        return 0x06;
+    if (tagVal == "WiiRemote") 
+        return 0x07;
+    if (tagVal == "AButton") 
+        return 0x08;
+    if (tagVal == "BButton") 
+        return 0x09;
+    if (tagVal == "1Button") 
+        return 0x0A;
+    if (tagVal == "2Button") 
+        return 0x0B;
+    if (tagVal == "PlusButton") 
+        return 0x0C;
+    if (tagVal == "MinusButton") 
+        return 0x0D;
+    if (tagVal == "PowerButton") 
+        return 0x0E;
+    if (tagVal == "DPad") 
+        return 0x0F;
+    if (tagVal == "HomeButton") 
+        return 0x10;
+    if (tagVal == "SquarePlusButton") 
+        return 0x11;
+    if (tagVal == "Nunchuck") 
+        return 0x12;
+    if (tagVal == "CButton") 
+        return 0x13;
+    if (tagVal == "ZButton") 
+        return 0x14;
+    if (tagVal == "NunchuckStick") 
+        return 0x15;
+    if (tagVal == "Star") 
+        return 0x16;
+    if (tagVal == "Coin") 
+        return 0x17;
+    if (tagVal == "AButtonBlink") 
+        return 0x18;
+    if (tagVal == "AButtonBlinkFloatLeft") 
+        return 0x19;
+    if (tagVal == "P1Hand") 
+        return 0x1A;
+    if (tagVal == "ButtonHover") 
+        return 0x1B;
+    if (tagVal == "LongButtonHover") 
+        return 0x1C;
+    /* 0x20 and up are a mystery.
+       The text box gets stretched to full width but does not
+       display anything (+ invalid read). */
+    printf(FAIL "FATAL" STRRESET ": Unrecognised icon '%s'\nAbort.\n", tagVal);
+	exit(5);
 }
 
 void xmlToBinString (FILE *inputfile, char *outputstr) {
@@ -219,6 +306,8 @@ void xmlToBinString (FILE *inputfile, char *outputstr) {
             case '.':
                 outputstr[i] = 0x85;
                 break;
+            case '/':
+                outputstr[i] = 0x5F;
 		}
 	}
 }
