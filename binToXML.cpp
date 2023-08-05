@@ -2,488 +2,473 @@
 #include <stdbool.h>
 #include <string.h>
 
-void voiceToXML (char inputVoice, char *outputstr) {
-    switch (inputVoice) {
+void colorToXML (unsigned char inputColor, FILE *outputfile) {
+    switch (inputColor) {
         case 0x01:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Hello\" />", 32);
+        case 0x0B:
+            fputs("<color value=\"black\" />", outputfile);
             break;
         case 0x02:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Howdy\" />", 32);
+            fputs("<color value=\"blue\" />", outputfile);
             break;
         case 0x03:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Welcome\" />", 34);
+            fputs("<color value=\"red\" />", outputfile);
             break;
         case 0x04:
-            strncat(outputstr, "<voice value=\"Ballyhoo_SeeYa\" />", 32);
+            fputs("<color value=\"purple\" />", outputfile);
             break;
         case 0x05:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Talk1\" />", 32);
+            fputs("<color value=\"green\" />", outputfile);
             break;
         case 0x06:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Talk2\" />", 32);
+            fputs("<color value=\"cyan\" />", outputfile);
             break;
         case 0x07:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Talk3\" />", 32);
+            fputs("<color value=\"yellow\" />", outputfile);
             break;
         case 0x08:
-            strncat(outputstr, "<voice value=\"Ballyhoo_AmIRight\" />", 35);
+            fputs("<color value=\"white\" />", outputfile);
             break;
         case 0x09:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Hoho\" />", 31);
+            fputs("<color value=\"gray\" />", outputfile);
+            break;
+    }
+}
+
+void voiceToXML (unsigned char inputVoice, FILE *outputfile) {
+    switch (inputVoice) {
+        case 0x01:
+            fputs("<voice value=\"Ballyhoo_Hello\" />", outputfile);
+            break;
+        case 0x02:
+            fputs("<voice value=\"Ballyhoo_Howdy\" />", outputfile);
+            break;
+        case 0x03:
+            fputs("<voice value=\"Ballyhoo_Welcome\" />", outputfile);
+            break;
+        case 0x04:
+            fputs("<voice value=\"Ballyhoo_SeeYa\" />", outputfile);
+            break;
+        case 0x05:
+            fputs("<voice value=\"Ballyhoo_Talk1\" />", outputfile);
+            break;
+        case 0x06:
+            fputs("<voice value=\"Ballyhoo_Talk2\" />", outputfile);
+            break;
+        case 0x07:
+            fputs("<voice value=\"Ballyhoo_Talk3\" />", outputfile);
+            break;
+        case 0x08:
+            fputs("<voice value=\"Ballyhoo_AmIRight\" />", outputfile);
+            break;
+        case 0x09:
+            fputs("<voice value=\"Ballyhoo_Hoho\" />", outputfile);
             break;
         case 0x0A:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Haha\" />", 31);
+            fputs("<voice value=\"Ballyhoo_Haha\" />", outputfile);
             break;
         case 0x0B:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Laughter\" />", 35);
+            fputs("<voice value=\"Ballyhoo_Laughter\" />", outputfile);
             break;
         case 0x0C:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Ohh\" />", 30);
+            fputs("<voice value=\"Ballyhoo_Ohh\" />", outputfile);
             break;
         case 0x0D:
-            strncat(outputstr, "<voice value=\"Ballyhoo_BadaBoom\" />", 35);
+            fputs("<voice value=\"Ballyhoo_BadaBoom\" />", outputfile);
             break;
         case 0x0E:
-            strncat(outputstr, "<voice value=\"Ballyhoo_GoodLuck\" />", 35);
+            fputs("<voice value=\"Ballyhoo_GoodLuck\" />", outputfile);
             break;
         case 0x0F:
-            strncat(outputstr, "<voice value=\"Ballyhoo_Whoa\" />", 31);
+            fputs("<voice value=\"Ballyhoo_Whoa\" />", outputfile);
             break;
         case 0x10:
-            strncat(outputstr, "<voice value=\"BigTop_Hello\" />", 30);
+            fputs("<voice value=\"BigTop_Hello\" />", outputfile);
             break;
         case 0x11:
-            strncat(outputstr, "<voice value=\"BigTop_ByeBye\" />", 31);
+            fputs("<voice value=\"BigTop_ByeBye\" />", outputfile);
             break;
         case 0x12:
-            strncat(outputstr, "<voice value=\"BigTop_Talk1\" />", 30);
+            fputs("<voice value=\"BigTop_Talk1\" />", outputfile);
             break;
         case 0x13:
-            strncat(outputstr, "<voice value=\"BigTop_Talk2\" />", 30);
+            fputs("<voice value=\"BigTop_Talk2\" />", outputfile);
             break;
         case 0x14:
-            strncat(outputstr, "<voice value=\"BigTop_Talk3\" />", 30);
+            fputs("<voice value=\"BigTop_Talk3\" />", outputfile);
             break;
         case 0x15:
-            strncat(outputstr, "<voice value=\"BigTop_AhhHaa\" />", 31);
+            fputs("<voice value=\"BigTop_AhhHaa\" />", outputfile);
             break;
         case 0x16:
-            strncat(outputstr, "<voice value=\"BigTop_MmmHmm\" />", 31);
+            fputs("<voice value=\"BigTop_MmmHmm\" />", outputfile);
             break;
         case 0x17:
-            strncat(outputstr, "<voice value=\"BigTop_LaughterAlt1\" />", 37);
+            fputs("<voice value=\"BigTop_LaughterAlt1\" />", outputfile);
             break;
         case 0x18:
-            strncat(outputstr, "<voice value=\"BigTop_LaughterAlt2\" />", 37);
+            fputs("<voice value=\"BigTop_LaughterAlt2\" />", outputfile);
             break;
         case 0x19:
-            strncat(outputstr, "<voice value=\"BigTop_Laughter\" />", 33);
+            fputs("<voice value=\"BigTop_Laughter\" />", outputfile);
             break;
         case 0x1A:
-            strncat(outputstr, "<voice value=\"BigTop_Surprised\" />", 34);
+            fputs("<voice value=\"BigTop_Surprised\" />", outputfile);
             break;
         case 0x1B:
-            strncat(outputstr, "<voice value=\"BigTop_LaughterAlt3\" />", 37);
+            fputs("<voice value=\"BigTop_LaughterAlt3\" />", outputfile);
             break;
         case 0x1C:
-            strncat(outputstr, "<voice value=\"BigTop_LaughterAlt4\" />", 37);
+            fputs("<voice value=\"BigTop_LaughterAlt4\" />", outputfile);
             break;
         case 0x1D:
-            strncat(outputstr, "<voice value=\"BigTop_GoodLuck\" />", 33);
+            fputs("<voice value=\"BigTop_GoodLuck\" />", outputfile);
             break;
         case 0x1E:
-            strncat(outputstr, "<voice value=\"BigTop_Whoa\" />", 29);
+            fputs("<voice value=\"BigTop_Whoa\" />", outputfile);
             break;
         case 0x1F:
-            strncat(outputstr, "<voice value=\"DK_Talk\" />", 25);
+            fputs("<voice value=\"DK_Talk\" />", outputfile);
             break;
         case 0x20:
-            strncat(outputstr, "<voice value=\"DK_Sad\" />", 24);
+            fputs("<voice value=\"DK_Sad\" />", outputfile);
             break;
         case 0x21:
-            strncat(outputstr, "<voice value=\"DK_Happy\" />", 26);
+            fputs("<voice value=\"DK_Happy\" />", outputfile);
             break;
         case 0x22:
-            strncat(outputstr, "<voice value=\"Bowser_Bwahahaha\" />", 34);
+            fputs("<voice value=\"Bowser_Bwahahaha\" />", outputfile);
             break;
         case 0x23:
-            strncat(outputstr, "<voice value=\"Bowser_Disappointed\" />", 37);
+            fputs("<voice value=\"Bowser_Disappointed\" />", outputfile);
             break;
         case 0x24:
-            strncat(outputstr, "<voice value=\"Bowser_DisappointedAlt\" />", 40);
+            fputs("<voice value=\"Bowser_DisappointedAlt\" />", outputfile);
             break;
         case 0x25:
-            strncat(outputstr, "<voice value=\"Bowser_Roar\" />", 29);
+            fputs("<voice value=\"Bowser_Roar\" />", outputfile);
             break;
         case 0x26:
-            strncat(outputstr, "<voice value=\"Bowser_Blarrgh\" />", 32);
+            fputs("<voice value=\"Bowser_Blarrgh\" />", outputfile);
             break;
         case 0x27:
-            strncat(outputstr, "<voice value=\"Bowser_Talk1\" />", 30);
+            fputs("<voice value=\"Bowser_Talk1\" />", outputfile);
             break;
         case 0x28:
-            strncat(outputstr, "<voice value=\"Bowser_Talk2\" />", 30);
+            fputs("<voice value=\"Bowser_Talk2\" />", outputfile);
             break;
         case 0x29:
-            strncat(outputstr, "<voice value=\"Bowser_Talk3\" />", 30);
+            fputs("<voice value=\"Bowser_Talk3\" />", outputfile);
             break;
         case 0x2A:
-            strncat(outputstr, "<voice value=\"Bowser_Laughter\" />", 33);
+            fputs("<voice value=\"Bowser_Laughter\" />", outputfile);
             break;
         case 0x2B:
-            strncat(outputstr, "<voice value=\"Bowser_Huh\" />", 28);
+            fputs("<voice value=\"Bowser_Huh\" />", outputfile);
             break;
         case 0x2C:
-            strncat(outputstr, "<voice value=\"Bowser_DoneFor\" />", 32);
+            fputs("<voice value=\"Bowser_DoneFor\" />", outputfile);
             break;
         case 0x2D:
         case 0x2E:
         case 0x2F:
         case 0x51:
         case 0x52:
-            strncat(outputstr, "<voice value=\"Beep\" />", 22);
+            fputs("<voice value=\"Beep\" />", outputfile);
             break;
         case 0x30:
-            strncat(outputstr, "<voice value=\"ShyGuy_Talk\" />", 29);
+            fputs("<voice value=\"ShyGuy_Talk\" />", outputfile);
             break;
         case 0x31:
-            strncat(outputstr, "<voice value=\"ShyGuy_Sad\" />", 28);
+            fputs("<voice value=\"ShyGuy_Sad\" />", outputfile);
             break;
         case 0x32:
-            strncat(outputstr, "<voice value=\"ShyGuy_Happy\" />", 30);
+            fputs("<voice value=\"ShyGuy_Happy\" />", outputfile);
             break;
         case 0x33:
-            strncat(outputstr, "<voice value=\"Goomba_Talk\" />", 29);
+            fputs("<voice value=\"Goomba_Talk\" />", outputfile);
             break;
         case 0x34:
-            strncat(outputstr, "<voice value=\"Goomba_Sad\" />", 28);
+            fputs("<voice value=\"Goomba_Sad\" />", outputfile);
             break;
         case 0x35:
-            strncat(outputstr, "<voice value=\"Goomba_Happy\" />", 30);
+            fputs("<voice value=\"Goomba_Happy\" />", outputfile);
             break;
         case 0x36:
-            strncat(outputstr, "<voice value=\"Koopa_Talk\" />", 28);
+            fputs("<voice value=\"Koopa_Talk\" />", outputfile);
             break;
         case 0x37:
-            strncat(outputstr, "<voice value=\"Koopa_Sad\" />", 27);
+            fputs("<voice value=\"Koopa_Sad\" />", outputfile);
             break;
         case 0x38:
-            strncat(outputstr, "<voice value=\"Koopa_Happy\" />", 29);
+            fputs("<voice value=\"Koopa_Happy\" />", outputfile);
             break;
         case 0x39:
-            strncat(outputstr, "<voice value=\"Whomp\" />", 23);
+            fputs("<voice value=\"Whomp\" />", outputfile);
             break;
         case 0x3A:
-            strncat(outputstr, "<voice value=\"Thwomp\" />", 24);
+            fputs("<voice value=\"Thwomp\" />", outputfile);
             break;
         case 0x3B:
-            strncat(outputstr, "<voice value=\"BobOmb\" />", 24);
+            fputs("<voice value=\"BobOmb\" />", outputfile);
             break;
         case 0x3C:
-            strncat(outputstr, "<voice value=\"BobOmb_Alt\" />", 28);
+            fputs("<voice value=\"BobOmb_Alt\" />", outputfile);
             break;
         case 0x3D:
-            strncat(outputstr, "<voice value=\"ChainChomp_Bark\" />", 33);
+            fputs("<voice value=\"ChainChomp_Bark\" />", outputfile);
             break;
         case 0x3E:
-            strncat(outputstr, "<voice value=\"Monkey_Talk\" />", 29);
+            fputs("<voice value=\"Monkey_Talk\" />", outputfile);
             break;
         case 0x3F:
-            strncat(outputstr, "<voice value=\"Monkey_Sad\" />", 28);
+            fputs("<voice value=\"Monkey_Sad\" />", outputfile);
             break;
         case 0x40:
-            strncat(outputstr, "<voice value=\"Kamek_Talk\" />", 28);
+            fputs("<voice value=\"Kamek_Talk\" />", outputfile);
             break;
         case 0x41:
-            strncat(outputstr, "<voice value=\"Kamek_Sad\" />", 27);
+            fputs("<voice value=\"Kamek_Sad\" />", outputfile);
             break;
         case 0x42:
-            strncat(outputstr, "<voice value=\"Toady_Talk\" />", 28);
+            fputs("<voice value=\"Toady_Talk\" />", outputfile);
             break;
         case 0x43:
-            strncat(outputstr, "<voice value=\"Toady_Sad\" />", 27);
+            fputs("<voice value=\"Toady_Sad\" />", outputfile);
             break;
         case 0x44:
-            strncat(outputstr, "<voice value=\"Unknown1\" />", 26);
+            fputs("<voice value=\"Unknown1\" />", outputfile);
             break;
         case 0x45:
-            strncat(outputstr, "<voice value=\"SpearGuy_Talk\" />", 31);
+            fputs("<voice value=\"SpearGuy_Talk\" />", outputfile);
             break;
         case 0x46:
-            strncat(outputstr, "<voice value=\"SpearGuy_Sad\" />", 30);
+            fputs("<voice value=\"SpearGuy_Sad\" />", outputfile);
             break;
         case 0x47:
-            strncat(outputstr, "<voice value=\"Bandit_Talk\" />", 29);
+            fputs("<voice value=\"Bandit_Talk\" />", outputfile);
             break;
         case 0x48:
-            strncat(outputstr, "<voice value=\"Bandit_Sad\" />", 28);
+            fputs("<voice value=\"Bandit_Sad\" />", outputfile);
             break;
         case 0x49:
-            strncat(outputstr, "<voice value=\"Pianta_Talk\" />", 29);
+            fputs("<voice value=\"Pianta_Talk\" />", outputfile);
             break;
         case 0x4A:
-            strncat(outputstr, "<voice value=\"Pianta_Sad\" />", 28);
+            fputs("<voice value=\"Pianta_Sad\" />", outputfile);
             break;
         case 0x4B:
-            strncat(outputstr, "<voice value=\"CutePianta_Talk\" />", 33);
+            fputs("<voice value=\"CutePianta_Talk\" />", outputfile);
             break;
         case 0x4C:
-            strncat(outputstr, "<voice value=\"CutePianta_Sad\" />", 32);
+            fputs("<voice value=\"CutePianta_Sad\" />", outputfile);
             break;
         case 0x4D:
-            strncat(outputstr, "<voice value=\"Unknown2\" />", 26);
+            fputs("<voice value=\"Unknown2\" />", outputfile);
             break;
         case 0x4E:
-            strncat(outputstr, "<voice value=\"Unknown3\" />", 26);
+            fputs("<voice value=\"Unknown3\" />", outputfile);
             break;
         case 0x4F:
-            strncat(outputstr, "<voice value=\"CaptainGoombaAlt\" />", 34);
+            fputs("<voice value=\"CaptainGoombaAlt\" />", outputfile);
             break;
         case 0x50:
-            strncat(outputstr, "<voice value=\"CaptainGoomba\" />", 31);
+            fputs("<voice value=\"CaptainGoomba\" />", outputfile);
             break;
         case 0x53:
-            strncat(outputstr, "<voice value=\"Dolphin_Talk\" />", 30);
+            fputs("<voice value=\"Dolphin_Talk\" />", outputfile);
             break;
         case 0x54:
-            strncat(outputstr, "<voice value=\"Dolphin_Sad\" />", 29);
+            fputs("<voice value=\"Dolphin_Sad\" />", outputfile);
             break;
         case 0x55:
-            strncat(outputstr, "<voice value=\"Mowz_Talk\" />", 27);
+            fputs("<voice value=\"Mowz_Talk\" />", outputfile);
             break;
         case 0x56:
-            strncat(outputstr, "<voice value=\"Mowz_Sad\" />", 26);
+            fputs("<voice value=\"Mowz_Sad\" />", outputfile);
             break;
         case 0x57:
-            strncat(outputstr, "<voice value=\"KingBoo_Talk\" />", 30);
+            fputs("<voice value=\"KingBoo_Talk\" />", outputfile);
             break;
         case 0x58:
         case 0x59:
-            strncat(outputstr, "<voice value=\"KingBoo_Sad\" />", 29);
+            fputs("<voice value=\"KingBoo_Sad\" />", outputfile);
             break;
         case 0x5A:
-            strncat(outputstr, "<voice value=\"RedBoo_Talk\" />", 29);
+            fputs("<voice value=\"RedBoo_Talk\" />", outputfile);
             break;
         case 0x5B:
-            strncat(outputstr, "<voice value=\"RedBoo_Sad\" />", 28);
+            fputs("<voice value=\"RedBoo_Sad\" />", outputfile);
             break;
         case 0x5C:
-            strncat(outputstr, "<voice value=\"Toadsworth_Talk\" />", 33);
+            fputs("<voice value=\"Toadsworth_Talk\" />", outputfile);
             break;
         case 0x5D:
-            strncat(outputstr, "<voice value=\"Toadsworth_Sad\" />", 32);
+            fputs("<voice value=\"Toadsworth_Sad\" />", outputfile);
             break;
     }
 }
 
-void iconToXML (char inputIcon, char *outputstr) {
+void iconToXML (unsigned char inputIcon, FILE *outputfile) {
     switch (inputIcon) {
         case 0x01:
-            strncat(outputstr, "<icon type=\"LeftArrow\" />", 25);
+            fputs("<icon type=\"LeftArrow\" />", outputfile);
             break;
         case 0x02:
-            strncat(outputstr, "<icon type=\"RightArrow\" />", 26);
+            fputs("<icon type=\"RightArrow\" />", outputfile);
             break;
         case 0x03:
-            strncat(outputstr, "<icon type=\"UpArrow\" />", 23);
+            fputs("<icon type=\"UpArrow\" />", outputfile);
             break;
         case 0x04:
-            strncat(outputstr, "<icon type=\"DownArrow\" />", 25);
+            fputs("<icon type=\"DownArrow\" />", outputfile);
             break;
         case 0x05:
-            strncat(outputstr, "<icon type=\"LeftRightArrow\" />", 30);
+            fputs("<icon type=\"LeftRightArrow\" />", outputfile);
             break;
         case 0x06:
-            strncat(outputstr, "<icon type=\"UpDownArrow\" />", 27);
+            fputs("<icon type=\"UpDownArrow\" />", outputfile);
             break;
         case 0x07:
-            strncat(outputstr, "<icon type=\"WiiRemote\" />", 25);
+            fputs("<icon type=\"WiiRemote\" />", outputfile);
             break;
         case 0x08:
-            strncat(outputstr, "<icon type=\"AButton\" />", 23);
+            fputs("<icon type=\"AButton\" />", outputfile);
             break;
         case 0x09:
-            strncat(outputstr, "<icon type=\"BButton\" />", 23);
+            fputs("<icon type=\"BButton\" />", outputfile);
             break;
         case 0x0A:
-            strncat(outputstr, "<icon type=\"1Button\" />", 23);
+            fputs("<icon type=\"1Button\" />", outputfile);
             break;
         case 0x0B:
-            strncat(outputstr, "<icon type=\"2Button\" />", 23);
+            fputs("<icon type=\"2Button\" />", outputfile);
             break;
         case 0x0C:
-            strncat(outputstr, "<icon type=\"PlusButton\" />", 26);
+            fputs("<icon type=\"PlusButton\" />", outputfile);
             break;
         case 0x0D:
-            strncat(outputstr, "<icon type=\"MinusButton\" />", 27);
+            fputs("<icon type=\"MinusButton\" />", outputfile);
             break;
         case 0x0E:
-            strncat(outputstr, "<icon type=\"PowerButton\" />", 27);
+            fputs("<icon type=\"PowerButton\" />", outputfile);
             break;
         case 0x0F:
-            strncat(outputstr, "<icon type=\"DPad\" />", 20);
+            fputs("<icon type=\"DPad\" />", outputfile);
             break;
         case 0x10:
-            strncat(outputstr, "<icon type=\"HomeButton\" />", 26);
+            fputs("<icon type=\"HomeButton\" />", outputfile);
             break;
         case 0x11:
-            strncat(outputstr, "<icon type=\"SquarePlusButton\" />", 32);
+            fputs("<icon type=\"SquarePlusButton\" />", outputfile);
             break;
         case 0x12:
-            strncat(outputstr, "<icon type=\"Nunchuck\" />", 24);
+            fputs("<icon type=\"Nunchuck\" />", outputfile);
             break;
         case 0x13:
-            strncat(outputstr, "<icon type=\"CButton\" />", 23);
+            fputs("<icon type=\"CButton\" />", outputfile);
             break;
         case 0x14:
-            strncat(outputstr, "<icon type=\"ZButton\" />", 23);
+            fputs("<icon type=\"ZButton\" />", outputfile);
             break;
         case 0x15:
-            strncat(outputstr, "<icon type=\"NunchuckStick\" />", 29);
+            fputs("<icon type=\"NunchuckStick\" />", outputfile);
             break;
         case 0x16:
-            strncat(outputstr, "<icon type=\"Star\" />", 20);
+            fputs("<icon type=\"Star\" />", outputfile);
             break;
         case 0x17:
-            strncat(outputstr, "<icon type=\"Coin\" />", 20);
+            fputs("<icon type=\"Coin\" />", outputfile);
             break;
         case 0x18:
-            strncat(outputstr, "<icon type=\"AButtonBlink\" />", 28);
+            fputs("<icon type=\"AButtonBlink\" />", outputfile);
             break;
         case 0x19:
-            strncat(outputstr, "<icon type=\"AButtonBlinkFloatLeft\" />", 36);
+            fputs("<icon type=\"AButtonBlinkFloatLeft\" />", outputfile);
             break;
         case 0x1A:
-            strncat(outputstr, "<icon type=\"P1 Hand\" />", 23);
+            fputs("<icon type=\"P1 Hand\" />", outputfile);
             break;
         case 0x1B:
-            strncat(outputstr, "<icon type=\"ButtonHover\" />", 27);
+            fputs("<icon type=\"ButtonHover\" />", outputfile);
             break;
         case 0x1C:
-            strncat(outputstr, "<icon type=\"LongButtonHover\" />", 31);
+            fputs("<icon type=\"LongButtonHover\" />", outputfile);
             break;
     }
 }
 
-void binToXMLString (unsigned char *mInputstr, char *outputstr) {
-    bool mIsColorMode = false;
-    bool mIsJargon = false;
-    for (int i = 0; i < strlen((char*)mInputstr); i++) {
-        switch (mInputstr[i]) {
-            case 0x10:
-                strncat(outputstr, " ", 1);
-                break;
-            case 0xC2:
-                strncat(outputstr, "!", 1);
-                break;
-            case 0xC3:
-                strncat(outputstr, "?", 1);
-                break;
-            case 0x0A:
-                strncat(outputstr, "\n", 1);
-                break;
-            case 0x1B:
-                strncat(outputstr, "\t", 1);
-                break;
-            case 0x3D:
-                strncat(outputstr, "-", 1);
-                break;
-            case 0x5C:
-                strncat(outputstr, "'", 1);
-                break;
-            case 0x85:
-                strncat(outputstr, ".", 1);
-                break;
-            case 0x5F:
-                strncat(outputstr, "/", 1);
-                break;
-            // Special chars
-            case 0xFF:
-                if (mIsJargon) {
-                    strncat(outputstr, "</unknown>", 10);
-                    mIsJargon = false;
-                } else 
-                    strncat(outputstr, "<pagebreak />\n", 14);
-                break;
-            case 0x0E:
-                iconToXML(mInputstr[i + 1], outputstr);
-                i++;
-                break;
-            case 0x1C:
-                voiceToXML(mInputstr[i + 1], outputstr);
-                i++;
-                break;
-            case 0x1E:
-                strncat(outputstr, "<color value=\"", 14);
-                mIsColorMode = true;
-                break;
-            // Color modes
-            case 0x01:
-            case 0x0B:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "black\" />", 9);
-                mIsColorMode = false;
-                break;
-            case 0x02:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "blue\" />", 8);
-                mIsColorMode = false;
-                break;
-            case 0x03:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "red\" />", 7);
-                mIsColorMode = false;
-                break;
-            case 0x04:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "purple\" />", 10);
-                mIsColorMode = false;
-                break;
-            case 0x05:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "green\" />", 9);
-                mIsColorMode = false;
-                break;
-            case 0x06:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "cyan\" />", 8);
-                mIsColorMode = false;
-                break;
-            case 0x07:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "yellow\" />", 10);
-                mIsColorMode = false;
-                break;
-            case 0x08:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "white\" />", 9);
-                mIsColorMode = false;
-                break;
-            case 0x09:
-                if (!mIsColorMode) 
-                    break;
-                strncat(outputstr, "gray\" />", 8);
-                mIsColorMode = false;
-                break;
-            // -----------
-            default:
-                if (mInputstr[i] >= 0x30 && mInputstr[i] <= 0x7A) 
-                    strncat(outputstr, (char*)&mInputstr[i], 1);
-                else if (!mIsJargon) {
-                    mIsJargon = true;
-                    strncat(outputstr, "<unknown>", 9);
-                    strncat(outputstr, (char*)&mInputstr[i], 1);
-                } else 
-                    strncat(outputstr, (char*)&mInputstr[i], 1);
-                break;
+void addToStr (unsigned char current, FILE *outputfile) {
+    switch (current) {
+        // Umlauts and probably more missing!
+        case 0x10:
+            fputc(' ', outputfile);
+            break;
+        case 0xC2:
+            fputc('!', outputfile);
+            break;
+        case 0xC3:
+            fputc('?', outputfile);
+            break;
+        case 0x0A:
+            fputc('\n', outputfile);
+            break;
+        case 0x1B:
+            fputc('\t', outputfile);
+            break;
+        case 0x3D:
+            fputc('-', outputfile);
+            break;
+        case 0x5C:
+            fputc('\'', outputfile);
+            break;
+        case 0x85:
+            fputc('.', outputfile);
+            break;
+        case 0x5F:
+            fputc('/', outputfile);
+            break;
+        // -------------
+        default:
+            fputc(current, outputfile);
+            break;
+    }
+}
+
+void binToXMLString (FILE *mInput, FILE *outputfile) {
+    bool isWaitingForFF = false;
+    char numSections[4];
+    fgets(numSections, 4, mInput);
+    fseek(mInput, atoi(numSections) * 4 + 4, SEEK_SET);
+    while (true) {
+        fgets(numSections, 4, mInput);
+        fseek(mInput, atoi(numSections) * 4 + 8, SEEK_CUR);
+        fputs("<section>\n", outputfile);
+        char current;
+        while ((current = fgetc(mInput)) != EOF) {
+            if (current == 0x0E)
+                iconToXML(fgetc(mInput), outputfile);
+            else if (current == 0x1C) 
+                voiceToXML(fgetc(mInput), outputfile);
+            else if (current == 0x1E) 
+                colorToXML(fgetc(mInput), outputfile);
+            
+            /* NULL + FF a few bytes later = next message entry
+               NULL + No FF = message data for next section */
+            else if (current == '\0') 
+                isWaitingForFF = true;
+            else if (current == 0xFF) {
+                isWaitingForFF = false;
+                fputs("<pagebreak />", outputfile);
+            } else if (isWaitingForFF) {
+                isWaitingForFF = false;
+                fputs("</section>\n", outputfile);
+                fseek(mInput, -3, SEEK_CUR); // Addresses are 4 bytes long
+                continue;
+            } else 
+                addToStr(current, outputfile);
         }
+        // Reached EOF
+        break;
     }
 }
