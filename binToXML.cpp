@@ -1,6 +1,11 @@
+#include <iostream>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+
+unsigned int convertToLittleEndian(unsigned int value) {
+    return ((value >> 24) & 0xFF) | ((value >> 8) & 0xFF00) | ((value << 8) & 0xFF0000) | ((value << 24) & 0xFF000000);
+}
 
 void colorToXML (unsigned char inputColor, FILE *outputfile) {
     switch (inputColor) {
@@ -437,15 +442,16 @@ void addToStr (unsigned char current, FILE *outputfile) {
 
 void binToXMLString (FILE *mInput, FILE *outputfile) {
     bool isWaitingForFF = false;
-    char numSections[4];
-    fgets(numSections, 4, mInput);
-    fseek(mInput, atoi(numSections) * 4 + 4, SEEK_SET);
+    unsigned int numSections;
+    fread(&numSections, sizeof(numSections), 1, mInput);
+    fseek(mInput, convertToLittleEndian(numSections) * 4 + 4, SEEK_SET);
     while (true) {
-        fgets(numSections, 4, mInput);
-        fseek(mInput, atoi(numSections) * 4 + 8, SEEK_CUR);
+        fread(&numSections, sizeof(numSections), 1, mInput);
+        fseek(mInput, convertToLittleEndian(numSections) * 4 + 4, SEEK_CUR);
         fputs("<section>\n", outputfile);
         char current;
-        while ((current = fgetc(mInput)) != EOF) {
+        do {
+            current = fgetc(mInput);
             if (current == 0x0E)
                 iconToXML(fgetc(mInput), outputfile);
             else if (current == 0x1C) 
@@ -457,17 +463,18 @@ void binToXMLString (FILE *mInput, FILE *outputfile) {
                NULL + No FF = message data for next section */
             else if (current == '\0') 
                 isWaitingForFF = true;
-            else if (current == 0xFF) {
+            else if (current == -1) {
                 isWaitingForFF = false;
-                fputs("<pagebreak />", outputfile);
+                fputs("<pagebreak />\n", outputfile);
+                fseek(mInput, 2, SEEK_CUR); // Always the case??
             } else if (isWaitingForFF) {
                 isWaitingForFF = false;
-                fputs("</section>\n", outputfile);
+                fputs("\n</section>\n", outputfile);
                 fseek(mInput, -3, SEEK_CUR); // Addresses are 4 bytes long
                 continue;
             } else 
                 addToStr(current, outputfile);
-        }
+        } while (!feof(mInput));
         // Reached EOF
         break;
     }
